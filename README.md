@@ -1,2 +1,3 @@
-# image-uploader
-image/file uploader for mongodb &amp; react
+## File upload using React.js, Node.js, Multer, Express, and MongoDB
+
+![](thumbnail.gif)
