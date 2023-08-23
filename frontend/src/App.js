@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) =>
 );
 
 function App() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState([]);
   console.log("line:0", name);
 
   const [avatars, setAvatars] = useState([]);
@@ -112,7 +112,7 @@ function App() {
       console.log("line:6", file.name);
 
       // POST request
-      const result = await axios.post("http://localhost:3000/upload", data, {
+      const result = await axios.post("http://localhost:3001/upload", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log("line:7", result);
@@ -212,7 +212,18 @@ function App() {
             onChange={(e) => setName(e.target.files[0])}
 
           />
+          {/* <img alt="shirt" src={name}></img> */}
+
+
+
         </label>
+
+        <button onClick={(e) => handleSubmit(name)}>Upload</button>
+
+
+
+
+
       </div>
 
       <section
@@ -223,15 +234,21 @@ function App() {
         {/* <h3>Uploads</h3> */}
         <div style={{display:"flex", justifyContent:"center"}} className={`${classes.containerGrid}`}>
           {avatars.map((avatar, idx) => (
+            
+            <div>
+              <button style={{margin:"auto", display:"flex"}}>Delete</button>
             <img key={`${avatar.name}-${idx}`} src={avatar.url} />
+            </div>
+
+
           ))}
         </div>
       </section>
 
-      {/* <div style={{ marginTop: "100px", textAlign: "center" }}>
+      <div style={{ marginTop: "100px", textAlign: "center" }}>
         <input type="file" onChange={handleChange} />
         <img style={{margin:"50px auto"}} src={file} />
-      </div> */}
+      </div>
 
      
 
